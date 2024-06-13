@@ -1,0 +1,254 @@
+/*Phase 2: Typography*/
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap');
+@font-face 
+{
+    font-family: IBMPlexSans;
+    src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap');
+}
+
+th.sortable { cursor: pointer; }
+th.sort-asc::after { content: " \25b2"; }
+th.sort-desc::after { content: " \25bc"; }
+
+output {
+  color:red;
+}
+
+table
+{
+    line-height:1.5;
+    width: 100%; /*Approved use*/
+}
+
+nav
+{
+    font-size:1.25em;
+    background-color: #ddd;
+    box-shadow: gray 0px 0px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow:1;
+}
+
+nav > div
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left:1rem;
+    margin-right:1rem;
+    width:50rem;
+}
+
+nav > div > div
+{
+    display:flex;
+    flex-grow: 1;
+}
+
+nav > div > p
+{
+    font-weight: bold;
+}
+
+nav > div > a
+{
+    color:#444;
+    text-decoration: none;
+    margin-left:1rem;
+}
+
+title
+{
+    font-size: 1.5em;
+}
+
+#descriptionHeader
+{
+    font-size: 1em;
+}
+
+#loginForm *
+{
+    font-size: 1.25em;
+}
+
+*
+{ 
+line-height: 1.25;
+font-family: IBMPlexSans, sans-serif;
+}
+
+/* changes anything inside <code></code> tags back to normal */
+main code
+{
+    line-height: 1.25;
+    font-family: monospace;
+}
+
+/* Phase 3: Borders, backgrounds, and whitespace */
+.actionCard
+{
+    background-color: #b1c3de;
+    border-color: #204a87;
+    border-style: solid;
+    padding: 1em;
+    line-height: 2rem;
+
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+
+.actionCard > div
+{
+    display:flex;
+    flex-direction:row;
+    align-items: end;
+    justify-content: center;
+}
+
+.title
+{
+    margin-top: 3rem;
+    border-bottom: #ddd 2px solid;
+}
+
+main > *
+{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+main > h1
+{
+    margin-bottom:0rem;
+}
+
+main > h2
+{
+    margin-top:0rem;
+    font-weight: 300;
+}
+
+
+
+/* Phase 4: Styling Links, Forms, and Tables */
+nav > div > a:hover
+{
+    text-decoration: underline;
+}
+
+nav > div > a:active
+{
+    color: #000;
+}
+
+.numberColumn
+{
+    text-align: right;
+}
+
+tr > th
+{
+    text-align: left;
+}
+
+th
+{
+    border-bottom: #ddd 2px solid;
+}
+
+#backToAssignmentLink
+{
+    margin-left: 1rem;
+}
+
+#loginForm
+{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#loginForm > div
+{
+    display:flex;
+    flex-direction: row;
+    width:50rem;
+    justify-content: flex-start;
+}
+
+#loginForm > div > span
+{
+    display:flex;
+    flex-grow:1;
+}
+
+#loginForm button, input
+{
+    width:50%; /*Approved use*/
+}
+
+#loginForm > *
+{
+    padding-bottom: 1rem;
+}
+
+#loginForm button
+{
+    height:2rem;
+}
+
+/* This is just to get rid of the border under the table header on the assignments page */
+.noUnderline > th
+{
+    border-bottom: #ffffff 0px solid;
+}
+
+/* Phase 5: Layout */
+main
+{
+max-width: 50rem;
+padding-left: 1rem;
+padding-right:1rem;
+width:50rem;
+}
+
+html
+{
+    width:100%; /*Approved use*/
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body
+{
+    width:100%; /*Approved use*/
+    height:100%; /*Approved use*/
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+header
+{
+    width: 100%; /*Approved use*/
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: center;
+
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+

@@ -1,0 +1,30 @@
+<html>
+<!doctype html>
+{% include "header.html" %}
+
+<main>
+	<h1 class="title">All assignments</h1>
+	<section>
+		<table>
+			<thead>
+				<tr class = "noUnderline">
+					<th>Assignment</th>
+					<th class = "sortable">Due Date</th>
+					<th class = "numberColumn sortable">Weight</th>
+				</tr>
+			</thead>
+			{% for assignment in assignments %}
+			<tr data-index="{{ forloop.counter }}">
+				<td><a href="/{{assignment.id}}" title="this link will take you to the assignment page">{{assignment.title}}</a></td>
+				<td data-value="{{assignment.deadline|date:'U'}}">{{assignment.deadline|date:"M j"}}</td>
+				<td class = "numberColumn" data-value="{{assignment.weight}}">{{assignment.weight}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</section>
+</main>
+<script type="module">
+	import { make_table_sortable } from "/static/main.js";
+	make_table_sortable($("table"));
+</script>
+</html>

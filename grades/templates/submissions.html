@@ -1,0 +1,37 @@
+<html>
+<!doctype html>
+{% include "header.html" %}
+
+<main>
+	<h1 class="title">{{assignment.title}}</h1>
+	<h2>All grades out of {{assignment.weight}}</h2>
+
+	<section>
+		<form action="/{{assignment.id}}/grade" method="post">
+			{% csrf_token %}
+			<table>
+				<thead>
+					<tr>
+						<th>Student</th>
+						<th>Submission</th>
+						<th>Grade</th>
+					</tr>
+				</thead>
+				{% for sub in submissions %}
+				<tr>
+					<td>{{sub.author.username}}</td>
+					<td><a href="/uploads/{{sub.file}}/" title="link to {{sub.author.username}}'s submission for assignment {{assignment_id}}">Submission</td>
+					<td><input type="number" title = "your numerical grade for assignment {{assignment_id}}" name="grade-{{sub.id}}" value="{{sub.score}}"></input></td>
+				</tr>
+				{% endfor %}
+			</table>
+		<button title="clicking this button will submit the grades you entered for these students into the system">Submit</button>
+		<a href="/{{assignment.id}}" role="button" id="backToAssignmentLink" title="clicking this will cancel any changes you have made to student grades and return you to the assignment page">Back to assignment</a>
+		</form>
+	</section>
+</main>
+<script type="module">
+	import { make_table_sortable, make_grade_hypothesized } from "/static/main.js";
+	make_form_async($("form"));
+</script>
+</html>

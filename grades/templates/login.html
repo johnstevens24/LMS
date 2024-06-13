@@ -1,0 +1,28 @@
+<html>
+<!doctype html>
+{% include "header.html" %}
+
+{% if error != None %}
+	<output>{{error}}</output>
+{% endif %}
+
+<main>
+	<h1 class="title">Log in</h1>
+	  <form action="/profile/login/" method="post" id="loginForm" name="loginForm">
+		{% csrf_token %}
+		<div>
+			<label for="Username">UserName:</label>
+			<span></span>
+			<input type="username" name="username" autofocus/>
+		</div>
+		<div>
+			<label for="Password">Password:</label>
+			<span></span>
+			<input type="password" name="password"/>
+		</div>
+		<button>Log in</button>
+		<input type="hidden" name="next" value="{{nextPage}}"/>
+  	</form>
+</main>
+<script type="module" src="/static/main.js"></script>
+</html>

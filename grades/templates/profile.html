@@ -1,0 +1,68 @@
+<html>
+<!doctype html>
+{% include "header.html" %}
+
+<main>
+	<h1 class="title">Your grades</h1>
+
+	<section class="actionCard">
+		Currently logged in as {{user.username}}. <a href="logout" role="button" title="This will log you out and return you to the log in screen">Log out</a>	
+	</section>
+
+	<section>
+		{% if isSupervisor == True or isTA == True %}
+		<table>
+			<thead>
+				<tr>
+					<th>Assignment</th>
+					<th class = "numberColumn sortable">Graded</th>
+				</tr>
+			</thead>
+			
+			{% for assignment in assignments %}
+			<tr data-index="{{ forloop.counter }}">
+				<td><a href="/{{assignment.id}}" title="this link will take you to the assignment page">{{assignment.title}}</a></td>
+				<td class = "numberColumn">{{gradedCount.pop}}/{{submissionCounts.pop}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% endif %}
+		{% if isStudent == True %}
+		<table>
+			<thead>
+				<tr>
+					<th>Assignment</th>
+					<th class = "numberColumn sortable">Score</th>
+				</tr>
+			</thead>
+			
+			{% for assignment in assignments %}
+			<tr data-index="{{ forloop.counter }}">
+				<td><a href="/{{assignment.id}}" title="this link will take you to the assignment page">{{assignment.title}}</a></td>
+				<td class = "numberColumn sortable" data-weight="{{assignmentWeight.pop}}">{{assignmentGrade.pop}}</td>
+			</tr>
+			{% endfor %}
+			<tfoot>
+				<tr>
+					<th>Final grade</th>
+					<th class = "numberColumn">{{finalGrade}}%</th>
+				</tr>
+			</tfoot>
+		</table>
+		{% endif %}
+	</section>
+</main>
+
+{% if isSupervisor == True or isTA == True %}
+	<script type="module">
+		import { make_table_sortable, make_grade_hypothesized } from "/static/main.js";
+		make_table_sortable($("table"));
+	</script>
+{% else %}
+<script type="module">
+	import { make_table_sortable, make_grade_hypothesized } from "/static/main.js";
+	make_table_sortable($("table"));
+	make_grade_hypothesized($("table"));
+</script>
+{% endif %}
+</html>
